@@ -1,0 +1,13 @@
+<button id="setCookieBtn">Set Cookie</button>
+<button id="logout">Logout</button>
+<script>
+document.getElementById("setCookieBtn").addEventListener("click", function() {
+  document.cookie = "username=John Doe; expires=Thu, 18 Dec 2025 12:00:00 UTC; path=/"; 
+  alert("Cookie set!");
+});
+
+document.getElementById("logout").addEventListener("click", function() {
+    document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    alert("Cookie cleared!");
+});
+</script>

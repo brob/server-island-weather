@@ -1,0 +1,20 @@
+---
+import CurrentConditions from './CurrentConditions.astro'
+const weatherResponse = await fetch('https://api.open-meteo.com/v1/forecast?latitude=42.3684&longitude=-83.3527&temperature_unit=fahrenheit&current=temperature_2m&daily=temperature_2m_max,temperature_2m_min&forecast_days=1')
+//decode stream to json
+const {current,daily} = await weatherResponse.json();
+const {temperature_2m} = current
+const {temperature_2m_max, temperature_2m_min} = daily
+console.log(current, daily)
+
+---
+
+
+<div class="weather">
+<h2>Current Weather</h2>
+<CurrentConditions>
+    <p slot="fallback">Loading ...</p>
+</CurrentConditions>
+<h3>H: {temperature_2m_max}&deg; L: {temperature_2m_min}&deg;</h3>
+<p>Time this ran  {new Date()}</p>
+</div>

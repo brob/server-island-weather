@@ -1,0 +1,10 @@
+---
+import Locked from "./Locked.astro"
+
+const loggedIn = Astro.cookies.get('username')
+console.log(loggedIn)
+---
+<div>
+    {loggedIn ? <slot /> : <slot name="fallback" />}
+    <slot name="test-fallback" /> 
+</div>

@@ -1,0 +1,13 @@
+---
+const weatherResponse = await fetch('https://api.open-meteo.com/v1/forecast?latitude=42.3684&longitude=-83.3527&temperature_unit=fahrenheit&current=temperature_2m,relative_humidity_2m')
+//decode stream to json
+const {current} = await weatherResponse.json();
+const {temperature_2m, relative_humidity_2m} = current
+
+console.log(current)
+
+---
+
+<h3>Current Temp: {temperature_2m}&deg;</h3>
+<h3>Current humidity: {relative_humidity_2m}%</h3>
+<p>Time this ran {new Date()}</p>

@@ -1,9 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import Gated from '../components/Gated.astro';
+import CookieButton from '../components/CookieButton.astro';
+import Locked from '../components/Locked.astro';
+import Weather from '../components/Weather.astro';
+
 ---
 
+<style>
+	.banner {
+		background: white;
+		display: flex;
+	}
+</style>
+
 <Layout title="Welcome to Astro.">
+	<div class="banner">		
+		<Weather />
+	</div>
 	<main>
 		<svg
 			class="astro-a"
@@ -33,17 +48,24 @@ import Card from '../components/Card.astro';
 				</linearGradient>
 			</defs>
 		</svg>
+		
 		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
+
 		<p class="instructions">
 			To get started, open the directory <code>src/pages</code> in your project.<br />
 			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
 		</p>
+		<CookieButton />
 		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
+			<Gated server:defer>
+				<Card
+					href="https://docs.astro.build/"
+					title="Documentation"
+					body="Learn how Astro works and explore the official API docs."
+				/>
+				<Locked slot="fallback" />
+				<Locked slot="test-fallback" />
+			</Gated>
 			<Card
 				href="https://astro.build/integrations/"
 				title="Integrations"
