@@ -12,7 +12,7 @@ console.log(current, daily)
 
 <div class="weather">
 <h2>Current Weather</h2>
-<CurrentConditions>
+<CurrentConditions server:defer>
     <p slot="fallback">Loading ...</p>
 </CurrentConditions>
 <h3>H: {temperature_2m_max}&deg; L: {temperature_2m_min}&deg;</h3>
